@@ -18,16 +18,19 @@
             discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
             clientId: '569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com',
             scope: 'https://www.googleapis.com/auth/calendar'
-        }).then(function () {
+        }).then(function (response) {
           // Listen for sign-in state changes.
           gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
           // Handle the initial sign-in state.
           updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-          console.log("This is working, Stage 1!");
+          console.log(gapi.auth2.getAuthInstance().isSignedin.get());
+        }); function(reason) {
+            //console.log('Error: ' + reason.result.error.message);
+            console.log("This is not working, Stage 1!");
+          }
+      });
 
-        });
-      }
 
       function updateSigninStatus(isSignedIn) {
         // When signin status changes, this function is called.
@@ -49,7 +52,7 @@
 
       function makeApiCall() {
         // Make an API call to the People API, and print the user's given name.
-        gapi.client.people.people.get({
+        /* gapi.client.people.people.get({
           'resourceName': 'people/me',
           'requestMask.includeField': 'person.names'
         }).then(function(response) {
@@ -58,6 +61,7 @@
           //console.log('Error: ' + reason.result.error.message);
           console.log("This is not working, Stage 1!");
         });
+        */
         window.alert("This is working, Stage 3!");
       }
     </script>
