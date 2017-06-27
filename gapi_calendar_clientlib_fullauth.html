@@ -1,5 +1,6 @@
 <html>
-  <head></head>
+  <head>
+  </head>
   <body>
     <script type="text/javascript">
       function handleClientLoad() {
@@ -23,6 +24,8 @@
 
           // Handle the initial sign-in state.
           updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          console.log("This is working, Stage 1!");
+
         });
       }
 
@@ -52,8 +55,10 @@
         }).then(function(response) {
           console.log('Hello, ' + response.result.names[0].givenName);
         }, function(reason) {
-          console.log('Error: ' + reason.result.error.message);
+          //console.log('Error: ' + reason.result.error.message);
+          console.log("This is not working, Stage 1!");
         });
+        window.alert("This is working, Stage 3!");
       }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
@@ -63,8 +68,6 @@
     <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
     <button id="signout-button" onclick="handleSignOutClick()">Sign Out</button>
     <button onclick="addEvent()">Add Event</button>
-
-
 
 
     <script async defer src="https://apis.google.com/js/api.js">
