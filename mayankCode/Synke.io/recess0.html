@@ -142,33 +142,12 @@
   <div class="scrollingHeaderSignIn">
     <table class="scrollingHeaderSignInTable">
       <tr>
-        <td><button class="blue ui button scrollingHeaderSignInElements" onclick="headScroll()">Sign Up</button></td>
-        <td>
+
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
-        <td><button class ="inverted ui button scrollingHeaderSignInElements" onclick="signOut()">signOut</button></td>
+        <!--<td><button class ="inverted ui button scrollingHeaderSignInElements" onclick="signOut()">signOut</button></td>-->
         <td><button class="inverted ui button scrollingHeaderSignInElements" onclick="learnMoreScroll()">Login</button></td>
-        <td>
-          <div id="signin_control"> <!--full signin block-->
-            <div class="row">
-              <div class="col-md-2 col-sm-2 col-xs-12">
-                <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">Sign In!</button><br>
-                <p id="aftersignin"></p>
-              </div><!-- .col -->
-              <div class="col-md-10 col-sm-10 col-xs-12">
 
 
-              <div class="panel panel-danger" id="result-panel">
-              <div class="panel-heading">
-                    <!--<h3 class="panel-title" id="result-title">Application Not Authorized</h3>-->
-              </div><!-- .panel-heading -->
-              <div class="panel-body">
-                <div id="event-response"></div>
-              </div><!-- .panel-body -->
-            </div><!-- .panel -->
-          </div><!-- .col -->
-        </div><!-- .row -->
-      </div><!--full signin block-->
-    </td>
       </tr>
     </table>
   </div>
@@ -247,6 +226,28 @@
         <td>Credit to <a href="https://videos.pexels.com/">Peskel</a> for the stock video.</td>
       </tr>
     </table>
+
+    <div id="signin_control"> <!--full signin block-->
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">Sign In!</button><br>
+          <p id="aftersignin"></p>
+        </div><!-- .col -->
+        <div class="col-md-10 col-sm-10 col-xs-12">
+
+
+        <div class="panel panel-danger" id="result-panel">
+        <div class="panel-heading">
+              <!--<h3 class="panel-title" id="result-title">Application Not Authorized</h3>-->
+        </div><!-- .panel-heading -->
+        <div class="panel-body">
+          <div id="event-response"></div>
+        </div><!-- .panel-body -->
+      </div><!-- .panel -->
+    </div><!-- .col -->
+  </div><!-- .row -->
+</div><!--full signin block-->
+
   </div>
 
 
