@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <body>
+
+    <button onclick="checkResource()">Check Busy<button>
+
+    <script>
+      function checkResource() {
+        var calendarId = "primary";
+        var check = {
+          items: [{id: calendarId, busy: 'Active'}],
+          timeMax: "2017-06-29T12:00:00-06:00",
+          timeMin: "2014-07-01T12:00:00-06:00"
+        };
+
+        var response = Calendar.Freebusy.query(check);
+        console.log(response.kind)
+        console.log('Time MIN = '+response.timeMin)
+        console.log('Time MAX = '+response.timeMax)
+        console.log('busy start = '+response.calendars[calendarId].busy[0].start)
+        console.log('busy end = '+response.calendars[calendarId].busy[0].end)
+
+        console.log('Response: '+ response);
+      }
+    </script>
+
+  </body>
+<html>
