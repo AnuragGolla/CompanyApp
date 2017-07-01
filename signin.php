@@ -31,6 +31,7 @@
     </script>
 
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
     <button href="#" onclick="signOut()">Sign out</button>
 
     <script>
