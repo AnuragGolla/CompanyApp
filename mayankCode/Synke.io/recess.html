@@ -1,0 +1,125 @@
+<html>
+<head>
+  <title>The actual Page</title>
+  <style>
+  </style>
+  <link rel="stylesheet" type="text/css" href="realCSS.css">
+  <link rel="stylesheet" type="text/css" href="button/button.css">
+  <link rel="stylesheet" type="text/css" href="icon/icon.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="typed.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      Typed.new('.introductionElementsQuote', {
+        strings: ["SAVE  TIME", "Save Energy", "Save Money"],
+        typeSpeed:70, backSpeed:40, loop:null, startDelay:2000
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      Typed.new('.pitchElementsQuote', {
+        strings: ["\"Organized my meetings and my life!\" - Mayank Mishra", "Eat a potato"],
+        typeSpeed: 10, loop:null
+      });
+    });
+
+    function headScroll(){
+      scrollTo(0,0);
+    }
+    function learnMoreScroll(){
+      scrollTo(0,parseInt($(document).height()*.28125, 10));
+    }
+    function aboutUsScroll(){
+      scrollTo(0,parseInt($(document).height()*.59375, 10));
+    }
+    function faqScroll(){
+      scrollTo(0,parseInt($(document).height()));
+    }
+  </script>
+</head>
+<body>
+  <!--Header that moves with page, transparent black, has links to learn more, about us, faq, sign up, login.-->
+  <div class="scrollingHeader dark">
+    <table class="scrollingHeaderTable">
+      <tr>
+        <td><button class="inverted ui button scrollingHeaderElements" onclick="headScroll()">Home</button></td>
+        <td><button class="inverted blue ui button scrollingHeaderElements" onclick="learnMoreScroll()">Learn More</button></td>
+        <td><button class="inverted blue ui button scrollingHeaderElements" onclick="aboutUsScroll()">About Us</button> </td>
+        <td><button class="inverted blue ui button scrollingHeaderElements" onclick="faqScroll()">FAQ</button> </td>
+      </tr>
+    </table>
+  </div>
+  <div class="scrollingHeaderSignIn">
+    <table class="scrollingHeaderSignInTable">
+      <tr>
+        <td><button class="blue ui button scrollingHeaderSignInElements" onclick="headScroll()">Sign Up</button></td>
+        <td><button class="inverted ui button scrollingHeaderSignInElements" onclick="learnMoreScroll()">Login</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="scrollingHeaderSpacer dark"></div>
+
+  <!--flashy video with Recess centered on page, moto, sign up and login buttons-->
+  <div class="videoHeader light">
+    <video class="headVideoVideo" id="myVideo" playsinline autoplay muted loop>
+      <source class="headVideoVideo" id="mp4Source" src="meet.mp4" type="video/mp4">
+    </video>
+    <div class="titleBackground">
+      <div class="titleText"><h1>S Y N K E</h1></div>
+    </div>
+  </div>
+
+  <!--quote from customer describing benefits and basic idea, learn more button-->
+  <div class="introduction dark">
+    <table class="introductionElements">
+      <tr>
+        <td class="introductionElementsQuote"></td>
+        <td><button class="inverted ui button scrollingHeaderElements" onclick="learnMoreScroll()">Learn More</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <!--Description of what the product actually is-->
+  <div class="learnMore light">
+
+  </div>
+
+  <!--another quote describing how useful it is and a sign up button-->
+  <div class="pitch">
+    <table class="pitchElements">
+      <tr>
+        <td class="pitchElementsQuote">Save</td>
+        <td><button class="inverted ui button scrollingHeaderElements" onclick="learnMoreScroll()">Sign Up</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <!--photo and description of both Mayank and Anurag-->
+  <div class="aboutUs dark">
+
+  </div>
+
+  <!--list of "frequently asked questions"-->
+  <div class="faq light">
+
+  </div>
+
+  <!--links to sign up pages, nothing really.-->
+  <div class="footer dark">
+    <table class="footerTable">
+      <tr>
+        <td><a href="#">Go To Top</a></td>
+        <td>Made by Anurag Golla and Mayank Mishra</td>
+        <td>Credit to <a href="Https://mattboldt.com">Matt Boldt</a> for the typing script.</td>
+      </tr>
+      <tr>
+        <td><a href="#">Login</a></td>
+        <td>Product of Atomated Designs</td>
+        <td>Credit to <a href="https://videos.pexels.com/">Peskel</a> for the stock video.</td>
+      </tr>
+    </table>
+  </div>
+
+
+</body>
+</html>

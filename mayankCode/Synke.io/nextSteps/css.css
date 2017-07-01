@@ -1,0 +1,75 @@
+
+  body{
+    color:red;
+
+  }
+  table, td, th, tr{
+    color:#ecf0f1;
+    border-collapse: collapse;
+    text-align: center;
+
+  }
+  .test{
+      width:90%;
+      height:2px;
+      text-align: center;
+      background-color: black;
+      border-width: 1px;
+      border-color: black;
+      z-index: 100;
+      position: absolute;
+      margin-left: 5%;
+      top:42.5%;
+  }
+
+  .head{
+    background-color: #00a0ff;
+    position: absolute;
+    left:0;
+    top:0;
+    height:35%;
+    width:100%;
+
+  }
+  .headImage{
+    height:90%;
+  }
+
+  .selectionRow{
+    table-layout: fixed;
+    position: absolute;
+    left:0;
+    top:35%;
+    height:7.5%;
+    width: 100%;
+    background-color: #e2e8e9;
+    padding: 0;
+  }
+
+  .selectionRowButton{
+    padding:0;
+    width:70%;
+    height:80%
+  }
+
+  .options{
+    table-layout: fixed;
+    position: absolute;
+    left:0;
+    top:42.4%;
+    height:57.5%;
+    width:100%;
+    background-color: #ecf0f1;
+    text-align: center;
+  }
+
+  .optionsButton {
+    width:90%;
+    height:80%;
+    text-align:center;
+  }
+
+  .optionsSearch{
+    width:80%;
+
+  }
