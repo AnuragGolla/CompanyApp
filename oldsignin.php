@@ -23,7 +23,6 @@
         console.log('Family Name: ' + profile.getFamilyName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
-
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
@@ -54,17 +53,14 @@
         			var clientId = '569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com';
         			var apiKey = 'AIzaSyAZFXRFZMDqlyEz3sk6SgH2pfFv-Jcjx3M';
         			var scopes = "https://www.googleapis.com/auth/calendar";
-
         			// Oauth2 functions
         			function handleClientLoad() {
         				gapi.client.setApiKey(apiKey);
         				window.setTimeout(checkAuth,1);
         			}
-
         			function checkAuth() {
         				gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
         			}
-
         			// show/hide the 'authorize' button, depending on application state
         			function handleAuthResult(authResult) {
         				var authorizeButton = document.getElementById('authorize-button');
@@ -83,18 +79,15 @@
         					authorizeButton.onclick = handleAuthClick;				// setup function to handle button click
         				}
         			}
-
         			// function triggered when user authorizes app
         			function handleAuthClick(event) {
         				gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
         				return false;
         			}
-
         			// function load the calendar api and make the api call
         			function makeApiCall() {
                 gapi.client.load('calendar', 'v3')
         			}
-
         		</script>
         		<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
@@ -177,17 +170,14 @@
             timeMax: "2017-07-01T12:00:00-00:00",
             timeMin: "2017-06-29T12:00:00-00:00"
           };
-
           var response = gapi.client.calendar.freebusy.query(check);
           console.log(response.kind)
           console.log('Time MIN = '+response.timeMin)
           console.log('Time MAX = '+response.timeMax)
           console.log('busy start = '+response.calendars[calendarId].busy[0].start)
           console.log('busy end = '+response.calendars[calendarId].busy[0].end)
-
           console.log('Response: '+ response);
         }
-
   </script> -->
 
 
@@ -248,7 +238,6 @@
 </script>
 
 <?php
-
 $service = new Google_CalendarService($client); // successfully connected
 $freebusy = new Google_FreeBusyRequest();
 $freebusy->setTimeMin('2017-06-29T12:00:00.000-06:00');
@@ -259,11 +248,9 @@ $freebusy->setCalendarExpansionMax(10);
 $mycalendars= array("agolla07@gmail.com");
 $freebusy->setItems = $mycalendars;
 $createdReq = $service->freebusy->query($freebusy);
-
 echo $createdReq->getKind(); // works
 echo $createdReq->getTimeMin(); // works
 echo $createdReq->getTimeMax(); // works
 $s = $createdReq->getCalendars($diekalender);
 Print_r($s, true); // doesn't show anything
-
 ?>
