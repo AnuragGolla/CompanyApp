@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-calendar-scope" content="https://www.googleapis.com/auth/calendar">
+    <meta name="google-signin-client_id" content="569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script src="jslib.js"></script>
+    <!--<script src="phplib.php"></script>-->
+
+    <style>
+      #signin_control {
+        background-color: aqua;
+      }
+    </style>
+
+  </head>
+  <body>
+    <script>
+
+    </script>
+
+
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <button href="#" onclick="signOut()">Sign out</button>
+
+
+    <div id="signin_control"> <!--full signin block-->
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">Sign In!</button><br>
+          <p id="aftersignin"></p>
+        </div><!-- .col -->
+        <div class="col-md-10 col-sm-10 col-xs-12">
+          <div class="panel panel-danger" id="result-panel">
+            <div class="panel-heading">
+          	   <!--<h3 class="panel-title" id="result-title">Application Not Authorized</h3>-->
+            </div><!-- .panel-heading -->
+            <div class="panel-body">
+          		<div id="event-response"></div>
+          	</div><!-- .panel-body -->
+        	</div><!-- .panel -->
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div><!--full signin block-->
+
+
+
+    <button onclick="insertEvent()">Insert Event<button>
+    <button onclick="checkResource()">Check Busy Old<button>
+    <button id="checkBusy">Check Busy<button>
+
+
+
+  </body>
+</html>
