@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 20px;
+    border: 3px solid white;
+}
+
+.pageBreaks {
+  height: 30px;
+  width: 100%;
+  float: left;
+}
+.upperLandingPage {
+  height: 525px;
+  border-radius: 50px;
+  border-color: #2c3e50;
+  border: 3px solid;
+}
+
+.upperLandingPageBreak {
+  height: 525px;
+}
+
+.lowerLandingPage {
+  height: 225px;
+}
+
+#sectionHeader{
+  font-size: 40px;
+  font-family: Helvetica;
+  text-align: center;
+  vertical-align: center;
+  float: left;
+  width: 100%;
+  height: 50px;
+  padding: 0px;
+  border-style: none;
+  margin: none;
+}
+
+div.manageCalendar, iframe {
+  width: 100%;
+  height: 450px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0 auto;
+  border: 1px solid white;
+}
+
+.calendarHeader {
+  width: 100%;
+  height: 25px; <!-- Check on other device-->
+  padding: 0px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+div.calendarHeader, p {
+  vertical-align: middle;
+  font-size: 20px;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.button {
+  display: inline-block;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px;
+  height: 225px;
+  border-radius: 50px;
+  border-color: #2c3e50;
+  border: 3px solid;
+  box-shadow: 0 10px #999;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 4px #666;
+  transform: translateY(6px);
+}
+
+.col-1 {width: 10%;}
+.col-2 {width: 26%;}
+.col-3 {width: 50%;}
+.col-4 {width: 38%;}
+.col-gap {width: 4%;}
+
+</style>
+</head>
+<body>
+
+
+<div class="pageBreaks"></div>
+
+
+<div class="col-1 upperLandingPageBreak"></div>
+<div class="col-2 upperLandingPage buttonstyle" style="background-color: #3498db"></div> <!-- pending requests-->
+<div class="col-gap upperLandingPageBreak"></div>
+<div class ="col-3 upperLandingPage buttonstyle"  style="background-color: #2ecc71; text-align: center; float:left; padding-top: 0px; padding-bottom: 25px">
+  <div class="calendarHeader">
+    <p>Manage Your Google Calendar Here<p>
+  </div>
+  <div class="manageCalendar" style="padding: 0px; margin: 0 auto">
+    <iframe src="https://www.google.com" name="userCalendar" style="padding-top: 0px">Google Calendar</iframe>
+  </div>
+</div> <!-- calendar iframe-->
+<div class="col-1 upperLandingPageBreak"></div>
+
+
+<div class="pageBreaks"></div>
+
+
+<div class="col-1 lowerLandingPage"></div>
+<form>
+  <input type="button" value="Create Your Group" class="col-4 button" style="background-color: #2ecc71; vertical-style: middle" onclick="window.location.href='mayankCode/Synke.io/recess0.html'">
+</form>
+<div class="col-gap lowerLandingPage"></div>
+<form>
+  <input type="button" value="Create Your Event" class="col-4 button" style="background-color: #3498db; vertical-style: middle" onclick="window.location.href='mayankCode/Synke.io/recess0.html'">
+</form>
+<div class="col-1 lowerLandingPage"></div>
+
+
+<div class="pageBreaks"></div>
+
+
+<script>
+
+
+
+</script>
+
+
+
+</body>
+<html>
