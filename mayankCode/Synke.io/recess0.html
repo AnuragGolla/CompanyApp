@@ -1,17 +1,14 @@
 <html>
 <head>
 
-<!--new Stuff-->
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-calendar-scope" content="https://www.googleapis.com/auth/calendar">
 <meta name="google-signin-client_id" content="569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com">
+
+<script src="typed.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style>
-  #signin_control {
-    background-color: aqua;
-  }
-</style>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 <script>
   function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
@@ -27,9 +24,7 @@
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
   };
-</script>
 
-<script type="text/javascript">
   var clientId = '569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com';
   var apiKey = 'AIzaSyAZFXRFZMDqlyEz3sk6SgH2pfFv-Jcjx3M';
   var scopes = "https://www.googleapis.com/auth/calendar";
@@ -74,58 +69,57 @@
     gapi.client.load('calendar', 'v3')
   }
 
-</script>
-<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-
-<script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
   }
-</script>
 
+  /*Typed Control*/
+  document.addEventListener('DOMContentLoaded', function(){
+    Typed.new('.titleInnerText', {
+      strings: ["synke.io"],
+      typeSpeed:200, backSpeed:40
+    });
+  });
 
+  document.addEventListener('DOMContentLoaded', function(){
+    Typed.new('.introductionElementsQuote', {
+      strings: ["SAVE  TIME", "Save Energy", "Save Money"],
+      typeSpeed:100, backSpeed:50, loop:null, startDelay:3500
+    });
+  });
 
+  document.addEventListener('DOMContentLoaded', function(){
+    Typed.new('.pitchElementsQuote', {
+      strings: ["\"Organized my meetings and my life!\" - Mayank Mishra", "Eat a potato"],
+      typeSpeed: 10, loop:null
+    });
+  });
 
+  /*button Control*/
+  function headScroll(){
+    scrollTo(0,0);
+  }
+  function learnMoreScroll(){
+    scrollTo(0,parseInt($(document).height()*.28125, 10));
+  }
+  function aboutUsScroll(){
+    scrollTo(0,parseInt($(document).height()*.59375, 10));
+  }
+  function faqScroll(){
+    scrollTo(0,parseInt($(document).height()));
+  }
+  </script>
 
-  <title>The actual Page</title>
-  <style>
-  </style>
+  <title>synke.io</title>
+
   <link rel="stylesheet" type="text/css" href="realCSS.css">
   <link rel="stylesheet" type="text/css" href="button/button.css">
   <link rel="stylesheet" type="text/css" href="icon/icon.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="typed.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      Typed.new('.introductionElementsQuote', {
-        strings: ["SAVE  TIME", "Save Energy", "Save Money"],
-        typeSpeed:70, backSpeed:40, loop:null, startDelay:2000
-      });
-    });
 
-    document.addEventListener('DOMContentLoaded', function(){
-      Typed.new('.pitchElementsQuote', {
-        strings: ["\"Organized my meetings and my life!\" - Mayank Mishra", "Eat a potato"],
-        typeSpeed: 10, loop:null
-      });
-    });
 
-    function headScroll(){
-      scrollTo(0,0);
-    }
-    function learnMoreScroll(){
-      scrollTo(0,parseInt($(document).height()*.28125, 10));
-    }
-    function aboutUsScroll(){
-      scrollTo(0,parseInt($(document).height()*.59375, 10));
-    }
-    function faqScroll(){
-      scrollTo(0,parseInt($(document).height()));
-    }
-  </script>
 </head>
 <body>
   <!--Header that moves with page, transparent black, has links to learn more, about us, faq, sign up, login.-->
@@ -142,9 +136,10 @@
   <div class="scrollingHeaderSignIn">
     <table class="scrollingHeaderSignInTable">
       <tr>
-        <td><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
+
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
         <!--<td><button class ="inverted ui button scrollingHeaderSignInElements" onclick="signOut()">signOut</button></td>-->
-        <td><button class="inverted ui button scrollingHeaderSignInElements" onclick="learnMoreScroll()">Login</button></td>
+        <td><button class="blue ui button scrollingHeaderSignInElements" onclick="window.location.href='./signUp.html'">Sign Up</button></td>
 
 
       </tr>
@@ -158,7 +153,11 @@
       <source class="headVideoVideo" id="mp4Source" src="meet.mp4" type="video/mp4">
     </video>
     <div class="titleBackground">
-      <div class="titleText"><h1>S Y N K E</h1></div>
+      <div class="titleText">
+        <div class="titleInnerText">
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -182,28 +181,41 @@
     <table class="pitchElements">
       <tr>
         <td class="pitchElementsQuote">Save</td>
-        <td><button class="inverted ui button scrollingHeaderElements" onclick="learnMoreScroll()">Sign Up</button></td>
+        <td><button class="inverted ui button scrollingHeaderElements" onclick="window.location.href='./signUp.html'">Sign Up</button></td>
       </tr>
     </table>
   </div>
 
   <!--photo and description of both Mayank and Anurag-->
   <div class="aboutUs dark">
-    <table class="aboutUsTable">
-      <tr class="aboutUsTableImages">
-        <td><!--<img class="aboustUsImages" src="mayank.jpeg" alt="We're Really Handsome">--></td>
-        <td><!--<img class="aboustUsImages" src="anurag.jpeg" alt="We're Really Handsome">--></td>
-      </tr>
-      <tr>
-        <td>This is some information about Mayank</td>
-        <td>This is some information about Anurag</td>
-      </tr>
-    </table>
+    <div class="aboutUsText">
+      <div class="aboutUsInnerText">
+        Mayank and Anurag are both 18 years old.
+      </div>
+    </div>
+    <div class="aboutUsLine"></div>
+    <div class="aboutUsImageDiv">
+      <img class="aboutUsImage" src="logo_2.jpg" alt="image">
+    </div>
   </div>
 
   <!--list of "frequently asked questions"-->
   <div class="faq light">
-
+    <div class="faqText">
+      <ul>
+        <li>Question</li>
+        <br>
+        <ul><li>Answer</li></ul>
+        <br><br>
+        <li>Question</li>
+        <br>
+        <ul><li>Answer</li></ul>
+        <br><br>
+        <li>Question</li>
+        <br>
+        <ul><li>Answer</li></ul>
+      </ul>
+    </div>
   </div>
 
   <!--links to sign up pages, nothing really.-->
@@ -215,8 +227,8 @@
         <td>Credit to <a href="Https://mattboldt.com">Matt Boldt</a> for the typing script.</td>
       </tr>
       <tr>
-        <td><a href="#">Sign Up</a></td>
-        <td>Product of Atomated Designs</td>
+        <td><a href="./signUp.html">Sign Up</a></td>
+        <td>An <a href="#">Incendium</a> Creation</td>
         <td>Credit to <a href="https://unsplash.com/">Unsplash</a> for the stock images.</td>
       </tr>
       <tr>
@@ -225,30 +237,27 @@
         <td>Credit to <a href="https://videos.pexels.com/">Peskel</a> for the stock video.</td>
       </tr>
     </table>
-
-    <div id="signin_control"> <!--full signin block-->
-      <div class="row">
-        <div class="col-md-2 col-sm-2 col-xs-12">
-          <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">Sign In!</button><br>
-          <p id="aftersignin"></p>
-        </div><!-- .col -->
-        <div class="col-md-10 col-sm-10 col-xs-12">
-
-
-        <div class="panel panel-danger" id="result-panel">
-        <div class="panel-heading">
-              <!--<h3 class="panel-title" id="result-title">Application Not Authorized</h3>-->
-        </div><!-- .panel-heading -->
-        <div class="panel-body">
-          <div id="event-response"></div>
-        </div><!-- .panel-body -->
-      </div><!-- .panel -->
-    </div><!-- .col -->
-  </div><!-- .row -->
-</div><!--full signin block-->
-
   </div>
 
+  <!--Authorization Div, located as 1 black pixel in the header-->
+  <div id="signin_control"> <!--full signin block-->
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-12">
+        <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">Sign In!</button><br>
+        <p id="aftersignin"></p>
+      </div><!-- .col -->
+      <div class="col-md-10 col-sm-10 col-xs-12">
+        <div class="panel panel-danger" id="result-panel">
+          <div class="panel-heading">
+            <!--<h3 class="panel-title" id="result-title">Application Not Authorized</h3>-->
+          </div><!-- .panel-heading -->
+          <div class="panel-body">
+            <div id="event-response"></div>
+          </div><!-- .panel-body -->
+        </div><!-- .panel -->
+      </div><!-- .col -->
+    </div><!-- .row -->
+  </div><!--full signin block-->
 
 </body>
 </html>
