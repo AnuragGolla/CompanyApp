@@ -80,14 +80,19 @@
   document.addEventListener('DOMContentLoaded', function(){
     Typed.new('.titleInnerText', {
       strings: ["synke.io"],
-      typeSpeed:200, backSpeed:40
+      typeSpeed:200,
     });
   });
 
   document.addEventListener('DOMContentLoaded', function(){
     Typed.new('.introductionElementsQuote', {
-      strings: ["SAVE  TIME", "Save Energy", "Save Money"],
-      typeSpeed:100, backSpeed:50, loop:null, startDelay:3500
+      strings: ["Welcome to <strong>synke.io</strong>","Prepare for the next generation of:", "", "Personalized Conference Design", "Intelligent Event Generation","Professional Data-Based Networking"],
+      typeSpeed: 16,
+      startDelay:3000,
+      backDelay: 1500,
+      contentType: 'html', // or text
+      // defaults to null for infinite loop
+      loop: null
     });
   });
 
@@ -118,6 +123,9 @@
   <link rel="stylesheet" type="text/css" href="realCSS.css">
   <link rel="stylesheet" type="text/css" href="button/button.css">
   <link rel="stylesheet" type="text/css" href="icon/icon.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 
 
 </head>
@@ -137,7 +145,7 @@
     <table class="scrollingHeaderSignInTable">
       <tr>
 
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
+        <button class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></button></td>
         <!--<td><button class ="inverted ui button scrollingHeaderSignInElements" onclick="signOut()">signOut</button></td>-->
         <td><button class="blue ui button scrollingHeaderSignInElements" onclick="window.location.href='./signUp.html'">Sign Up</button></td>
 
@@ -166,7 +174,7 @@
     <table class="introductionElements">
       <tr>
         <td class="introductionElementsQuote"></td>
-        <td><button class="inverted ui button scrollingHeaderElements" onclick="learnMoreScroll()">Learn More</button></td>
+        <td><button class="inverted ui button introductionElementsButton" onclick="learnMoreScroll()">Learn More</button></td>
       </tr>
     </table>
   </div>
@@ -202,21 +210,21 @@
   <!--list of "frequently asked questions"-->
   <div class="faq light">
     <div class="faqText">
-      <ul>
-        <li>Question</li>
-        <br>
-        <ul><li>Answer</li></ul>
-        <br><br>
-        <li>Question</li>
-        <br>
-        <ul><li>Answer</li></ul>
-        <br><br>
-        <li>Question</li>
-        <br>
-        <ul><li>Answer</li></ul>
+      <ul class='faqQuestionHover'>
+        <li class='faqQuestion'>What happens with my data?</li>
+        <ul><li>Nothing! We never actually see what events are on your calendar, just that they exist!</li></ul>
+      </ul>
+      <ul class='faqQuestionHover'>
+        <li class='faqQuestion'>Should I use synke.io?</li>
+        <ul><li>We are for people and companies that use (or want to use) their google calendars frequently. This product is especially effective for users with busy work schedules</li></ul>
+      </ul>
+      <ul class='faqQuestionHover'>
+        <li class='faqQuestion'>Do I have to be a part of groups I dont want to be in?</li>
+        <ul><li>Absolutley not! We give each user the option to choose to be in a group or not!</li></ul>
       </ul>
     </div>
   </div>
+
 
   <!--links to sign up pages, nothing really.-->
   <div class="footer dark">

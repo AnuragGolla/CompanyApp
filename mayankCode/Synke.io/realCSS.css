@@ -95,19 +95,22 @@ a{
 }
 .titleText {
   color:#ecf0f1;
-  font-size: 7vw;
+  font-size: 6.6vw;
+  font-family: 'Lato';
   height: 100%;
   width: 100%;
+  opacity: 1;
 }
 .titleInnerText{
   position: absolute;
   top:8vh;
   left:1.2vw;
-  opacity: 1;
+  opacity: 1!important;
 }
 .typed-cursor{
   opacity: 0;
 }
+
 .introduction {
   position: absolute;
   top: 90%;
@@ -123,9 +126,19 @@ a{
 .introductionElementsQuote{
   width: 75%;
   color: #ecf0f1;
-  font-family: monospace;
-  font-size:4vw;
-  font-weight:light;
+  font-family: 'Open Sans Condensed';
+  font-weight:bold;
+  font-size:3vw;
+}
+.introductionElementsButton{
+  height: 70%; width:70%;
+  animation: mymove .7s;
+  animation-iteration-count: 2;
+  animation-delay: 26.5s;
+}
+@keyframes mymove {
+    from {height: 70%; width:70%;}
+    to {background-color: white;}
 }
 
 .learnMore {
@@ -151,9 +164,9 @@ a{
 .pitchElementsQuote{
   width: 75%;
   color: #ecf0f1;
-  font-family: serif;
-  font-size:2vw;
-  font-weight:light;
+  font-family: 'Open Sans Condensed';
+  font-size:3vw;
+  font-weight:bold;
 }
 
 .aboutUs{
@@ -164,11 +177,11 @@ a{
   width:100%;
 }
 .aboutUsText{
-
   height:100%;
   width:60%;
   color:#ecf0f1;
   font-size: 2vw;
+  font-family: 'Open Sans Condensed';
 }
 .aboutUsInnerText{
   position:absolute;
@@ -211,7 +224,21 @@ a{
   color:black;
 }
 .faqText{
-  
+  position: absolute;
+  left:10%;
+  width:80%;
+  font-size: 2vw;
+  font-family: 'Open Sans Condensed';
+  color:#3498db;
+}
+.faqQuestion{
+    font-size: 2.3vw;
+    font-weight: bold;
+    color:#3498db;
+}
+.faqQuestionHover:hover{
+
+  font-size: 2.3vw;
 }
 
 .footer{
