@@ -112,6 +112,8 @@
     <!-- Insert Event code-->
         	<button onclick="insertEvent()">Insert Event<button>
         	  <script>
+              var profile = googleUser.getBasicProfile();
+              var userEmail = profile.getEmail()
         	    function insertEvent () {
         	      var myevent = {
         	        'summary': 'Test Event',
@@ -123,7 +125,7 @@
         	        },
         	      }
         	      var myrequest = gapi.client.calendar.events.insert({
-        	        'calendarId': 'primary',
+        	        'calendarId': userEmail,
         	        'resource': myevent
         	      });
         	      myrequest.execute(function(myevent) {
@@ -210,7 +212,7 @@
   </script>
 -->
 
-
+<!--
 
 <script>
   $(document).ready(function(){
@@ -237,6 +239,10 @@
   });
 </script>
 
+-->
+
+
+<!--
 <?php
 $service = new Google_CalendarService($client); // successfully connected
 $freebusy = new Google_FreeBusyRequest();
@@ -254,3 +260,4 @@ echo $createdReq->getTimeMax(); // works
 $s = $createdReq->getCalendars($diekalender);
 Print_r($s, true); // doesn't show anything
 ?>
+-->
