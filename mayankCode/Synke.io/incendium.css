@@ -1,0 +1,33 @@
+body{
+  background-color: black;
+}
+
+.logoImage{
+  position: absolute;
+  top: 0%;
+  left: 20%;
+  width:60%;
+  height:80%
+}
+.horizontalLine{
+  position: absolute;
+  background-color:white;
+  top: calc(80% - 1px);
+  left: 0%;
+  width:100%;
+  height:2px;
+}
+.selectionRow{
+  position: absolute;
+  top: 80%;
+  left: 0%;
+  width:100%;
+  height:20%;
+}
+.selectionRowButton{
+  position: absolute;
+  top: 10%;
+  left: 45%;
+  width:10%;
+  height:80%;
+}
