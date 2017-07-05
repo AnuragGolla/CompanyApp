@@ -56,6 +56,7 @@
           $.post('serverstuff.php', {user_Email: userObject.U3});    */
         //  $.post("serverstuff.php");
         //  return false;
+        // getUserEvents() function here***************
       }
     </script>
 
