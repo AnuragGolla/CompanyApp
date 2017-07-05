@@ -5,7 +5,7 @@ $password = "xampp15";
 $dbname = "synkeio_database";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $synkeio_database);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
 if (!$conn) {
@@ -14,18 +14,53 @@ if (!$conn) {
 echo "Connected successfully";
 
 
-$sql = "INSERT INTO googleUsers (ID, fullName, givenName, lastName, email) VALUES ('123', 'Anurag Golla', 'Anurag', 'Golla', 'agolla07@gmail.com');";
+$userDbId = 0;
+$userDbFullName = "";
+$userDbGivenName = "";
+$userDbFamilyName = "";
+$userDbEmail = "";
 
 
-
-
-if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+if (isset($_POST['user_Id']))
+{
+  $userDbId = $_POST["user_Id"];
 }
 
+if (isset($_POST['user_FullName']))
+{
+  $userDbFullName = $_POST["user_FullName"];
+}
+
+if (isset($_POST['user_GivenName']))
+{
+  $userDbGivenName = $_POST["user_GivenName"];
+}
+
+if (isset($_POST['user_FamilyName']))
+{
+  $userDbFamilyName = $_POST["user_FamilyName"];
+}
+
+if (isset($_POST['user_Email']))
+{
+  $userDbEmail = $_POST["user_Email"];
+}
+
+$userDbId = $_POST["user_Id"];
+$userDbFullName = $_POST["user_FullName"];
+$userDbGivenName = $_POST["user_GivenName"];
+$userDbFamilyName = $_POST["user_FamilyName"];
+$userDbEmail = $_POST["user_Email"];
 
 
-mysqli_close($conn);
+$profileData = "INSERT INTO googleUsers (ID, fullName, givenName, lastName, email)
+VALUES ('$userDbId', '$userDbFullName', '$userDbGivenName', '$userDbFamilyName', '$userDbEmail');";
+
+
+if (mysqli_query($conn, $profileData)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $profileData . "<br>" . mysqli_error($conn);
+}
+
 ?>
