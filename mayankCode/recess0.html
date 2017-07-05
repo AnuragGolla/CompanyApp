@@ -1,0 +1,271 @@
+<html>
+<head>
+
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-calendar-scope" content="https://www.googleapis.com/auth/calendar">
+<meta name="google-signin-client_id" content="569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com">
+
+<script src="typed.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script>
+  function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+  };
+
+  var clientId = '569701942444-up9i9i2vetl77rd8sqhc9e7ggtdlturj.apps.googleusercontent.com';
+  var apiKey = 'AIzaSyAZFXRFZMDqlyEz3sk6SgH2pfFv-Jcjx3M';
+  var scopes = "https://www.googleapis.com/auth/calendar";
+
+  // Oauth2 functions
+  function handleClientLoad() {
+    gapi.client.setApiKey(apiKey);
+    window.setTimeout(checkAuth,1);
+  }
+
+  function checkAuth() {
+    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+  }
+
+  // show/hide the 'authorize' button, depending on application state
+  function handleAuthResult(authResult) {
+    var authorizeButton = document.getElementById('authorize-button');
+    var resultPanel		= document.getElementById('result-panel');
+    var resultTitle		= document.getElementById('result-title');
+    if (authResult && !authResult.error) {
+      authorizeButton.style.visibility = 'hidden';			// if authorized, hide button
+      //document.getElementById("aftersignin").innerHTML = "Congrats, you are signed in!"
+      resultPanel.className = resultPanel.className.replace( /(?:^|\s)panel-danger(?!\S)/g , '' )	// remove red class
+      resultPanel.className += ' panel-success';				// add green class
+      //resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+      makeApiCall();											// call the api if authorization passed
+    } else {													// otherwise, show button
+      authorizeButton.style.visibility = 'hidden';
+      resultPanel.className += ' panel-danger';				// make panel red
+      authorizeButton.onclick = handleAuthClick;				// setup function to handle button click
+    }
+  }
+
+  // function triggered when user authorizes app
+  function handleAuthClick(event) {
+    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+    return false;
+  }
+
+  // function load the calendar api and make the api call
+  function makeApiCall() {
+    gapi.client.load('calendar', 'v3')
+  }
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+
+  /*Typed Control*/
+  document.addEventListener('DOMContentLoaded', function(){
+    Typed.new('.titleInnerText', {
+      strings: ["synke.io"],
+      typeSpeed:200,
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    Typed.new('.introductionElementsQuote', {
+      strings: ["Welcome to <strong>synke.io</strong>","Prepare for the next generation of:", "", "Personalized Conference Design", "Intelligent Event Generation","Professional Data-Based Networking"],
+      typeSpeed: 16,
+      startDelay:3000,
+      backDelay: 1500,
+      contentType: 'html', // or text
+      // defaults to null for infinite loop
+      loop: null
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    Typed.new('.pitchElementsQuote', {
+      strings: ["\"A simple way to reduce hassle and stress.\" - Ben Peeples", "\"I was able to focus on my work instead of logisitcs!\" - Aaron Jafee", "\"This is the epitome of working smart not hard.\" - John Dickson"],
+      typeSpeed: 15, backDelay:4000, loop:null
+    });
+  });
+
+  /*button Control*/
+  function headScroll(){
+    scrollTo(0,0);
+  }
+  function learnMoreScroll(){
+    scrollTo(0,parseInt($(document).height()*.28125, 10));
+  }
+  function aboutUsScroll(){
+    scrollTo(0,parseInt($(document).height()*.59375, 10));
+  }
+  function faqScroll(){
+    scrollTo(0,parseInt($(document).height()));
+  }
+  </script>
+
+  <title>synke.io</title>
+
+  <link rel="stylesheet" type="text/css" href="realCSS.css">
+  <link rel="stylesheet" type="text/css" href="button/button.css">
+  <link rel="stylesheet" type="text/css" href="icon/icon.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+
+</head>
+<body>
+  <!--Header that moves with page, transparent black, has links to learn more, about us, faq, sign up, login.-->
+  <div class="scrollingHeader dark">
+    <table class="scrollingHeaderTable">
+      <tr>
+        <td><button class="inverted ui button scrollingHeaderElements" onclick="headScroll()">Home</button></td>
+        <td><button class="inverted blue ui button scrollingHeaderElements" onclick="learnMoreScroll()">Learn More</button></td>
+        <td><button class="inverted blue ui button scrollingHeaderElements" onclick="aboutUsScroll()">About Us</button> </td>
+        <td><button class="inverted blue ui button scrollingHeaderElements" onclick="faqScroll()">FAQ</button> </td>
+      </tr>
+    </table>
+  </div>
+  <div class="scrollingHeaderSignIn">
+    <table class="scrollingHeaderSignInTable">
+      <tr>
+
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
+        <!--<td><button class ="inverted ui button scrollingHeaderSignInElements" onclick="signOut()">signOut</button></td>-->
+        <td><button class="blue ui button scrollingHeaderSignInElements" onclick="window.location.href='./signUp.html'">Sign Up</button></td>
+
+
+      </tr>
+    </table>
+  </div>
+  <div class="scrollingHeaderSpacer dark"></div>
+
+  <!--flashy video with Recess centered on page, moto, sign up and login buttons-->
+  <div class="videoHeader light">
+    <video class="headVideoVideo" id="myVideo" playsinline autoplay muted loop>
+      <source class="headVideoVideo" id="mp4Source" src="meet.mp4" type="video/mp4">
+    </video>
+    <div class="titleBackground">
+      <div class="titleText">
+        <div class="titleInnerText">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--quote from customer describing benefits and basic idea, learn more button-->
+  <div class="introduction dark">
+    <table class="introductionElements">
+      <tr>
+        <td class="introductionElementsQuote"></td>
+        <td><button class="inverted ui button introductionElementsButton" onclick="learnMoreScroll()">Learn More</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <!--Description of what the product actually is-->
+  <div class="learnMore light">
+
+  </div>
+
+  <!--another quote describing how useful it is and a sign up button-->
+  <div class="pitch">
+    <table class="pitchElements">
+      <tr>
+        <td class="pitchElementsQuote"></td>
+        <td><button class="inverted ui button scrollingHeaderElements" onclick="window.location.href='./signUp.html'">Sign Up</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <!--photo and description of both Mayank and Anurag-->
+  <div class="aboutUs dark">
+    <div class="aboutUsText">
+      <div class="aboutUsInnerText">
+        Mayank and Anurag met at the old age of 4 years old and have been fast friends ever since. Mayank is 18 years old, likes long walks on the beach and will be attending the University of Pennsylvania in the fall. Anurag is also 18 years old, enjoys dancing in the rain, and has chosen to attend the Massachusetts Institue of Technology. They each have a passion for computer science and buisness and will be studying both subjects at their respective institutions.
+      </div>
+    </div>
+    <div class="aboutUsLine"></div>
+    <div class="aboutUsImageDiv">
+      <img class="aboutUsImage" src="logo_2.jpg" alt="image">
+    </div>
+  </div>
+
+  <!--list of "frequently asked questions"-->
+  <div class="faq light">
+    <div class="faqText">
+      <ul class='faqQuestionHover'>
+        <li class='faqQuestion'>What happens with my data?</li>
+        <ul><li>Nothing! We never actually see what events are on your calendar, just that they exist!</li></ul>
+      </ul>
+      <ul class='faqQuestionHover'>
+        <li class='faqQuestion'>Should I use synke.io?</li>
+        <ul><li>We are for people and companies that use (or want to use) their google calendars frequently. This product is especially effective for users with busy work schedules</li></ul>
+      </ul>
+      <ul class='faqQuestionHover'>
+        <li class='faqQuestion'>Do I have to be a part of groups I dont want to be in?</li>
+        <ul><li>Absolutley not! We give each user the option to choose to be in a group or not!</li></ul>
+      </ul>
+    </div>
+  </div>
+
+
+  <!--links to sign up pages, nothing really.-->
+  <div class="footer dark">
+    <table class="footerTable">
+      <tr>
+        <td><a href="#">Go To Top</a></td>
+        <td>Made by Anurag Golla and Mayank Mishra</td>
+        <td>Credit to <a href="Https://mattboldt.com">Matt Boldt</a> for the typing script.</td>
+      </tr>
+      <tr>
+        <td><a href="./signUp.html">Sign Up</a></td>
+        <td>An <a href="./incendium.html">Incendium</a> Creation</td>
+        <td>Credit to <a href="https://unsplash.com/">Unsplash</a> for the stock images.</td>
+      </tr>
+      <tr>
+        <td><a href="#">Login</a></td>
+        <td><a href="#">Contact Us</a></td>
+        <td>Credit to <a href="https://videos.pexels.com/">Peskel</a> for the stock video.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!--Authorization Div, located as 1 black pixel in the header-->
+  <div id="signin_control"> <!--full signin block-->
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-12">
+        <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">Sign In!</button><br>
+        <p id="aftersignin"></p>
+      </div><!-- .col -->
+      <div class="col-md-10 col-sm-10 col-xs-12">
+        <div class="panel panel-danger" id="result-panel">
+          <div class="panel-heading">
+            <!--<h3 class="panel-title" id="result-title">Application Not Authorized</h3>-->
+          </div><!-- .panel-heading -->
+          <div class="panel-body">
+            <div id="event-response"></div>
+          </div><!-- .panel-body -->
+        </div><!-- .panel -->
+      </div><!-- .col -->
+    </div><!-- .row -->
+  </div><!--full signin block-->
+
+</body>
+</html>
