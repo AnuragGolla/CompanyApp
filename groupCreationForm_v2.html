@@ -1,0 +1,160 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <style>
+  .container1 input[type=text] {
+  padding:5px 0px;
+  margin:5px 5px 5px 0px;
+  }
+
+  .add_form_field
+  {
+      background-color: #1c97f3;
+      border: none;
+      color: white;
+      padding: 8px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+   border:1px solid #186dad;
+  }
+
+  input{
+      border: 1px solid #1c97f3;
+      width: 260px;
+      height: 40px;
+   margin-bottom:14px;
+  }
+
+  .delete{
+      background-color: #fd1200;
+      border: none;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+  }
+  </style>
+</head>
+
+<body>
+
+
+    Select a Group Name:
+    <input type="text" name="groupName">
+    <br>
+    Search for other Synke.io memebers by e-mail to join your group:<br>
+
+    <form action="checkGroupMember.php" method="POST">
+      <input type="text" name="addedMember" value=""><img src="" alt="checkmark/xmark img" style="border: 1px solid black"></img>
+      <br>
+      <input type="submit" value="Add Member">
+    </form>
+
+
+    <input type="submit" name="create group" onclick="makeGroup()" value ="Create the Group!"</button>
+
+
+    <div id="membersList">
+      Group Members:<br>
+    </div>
+
+
+
+    <script type='text/javascript'>
+      function makeGroup() {
+
+      }
+    </script>
+
+  <script>
+    function checkUser(emailStr) {
+      if (emailStr == "") {
+          alert("You did not enter an email!");
+          return;
+      } else {
+          if (window.XMLHttpRequest) {
+              // code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp = new XMLHttpRequest();
+          } else {
+              // code for IE6, IE5
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  document.getElementById("membersList").innerHTML += this.responseText + "<br>";
+              }
+          };
+          xmlhttp.open("POST","groupCreationForm.php",true);
+          xmlhttp.send();
+      }
+  }
+  </script>
+
+
+<!--
+  <div class="container1">
+    <button class="add_form_field">Add New Field &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
+      <form id="userForm">
+        <input type="submit" name="user form submit"><br>
+        <input type="text" name="mytext[]" id="input1">
+
+      </form>
+  </div>
+
+
+
+
+  <script>
+  $(document).ready(function() {
+      var max_fields      = 15;
+      var wrapper         = $(".container1");
+      var add_button      = $(".add_form_field");
+
+      var x = 1;
+      $(add_button).click(function(e){
+          e.preventDefault();
+          if(x < max_fields){
+              x++;
+              $(wrapper).append('<div><input type="text" name="mytext[]" id="input' + x + '"/><a href="#" class="delete">Delete</a></div>'); //add input box
+          }
+    else
+    {
+    alert('You reached the maximum number of group members.')
+    }
+      });
+
+      $(wrapper).on("click",".delete", function(e){
+          e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+  });
+
+/*  var inputs = {};
+  $.each($('#myForm').serializeArray(), function(i, field) {
+      values[field.name] = field.value;
+  });*/
+
+
+  $('userForm').submit(function() {
+    var inputs = $(this).serialize();
+    alert(inputs);
+  })
+  </script>
+
+-->
+
+
+
+
+
+</body>
+
+</html>

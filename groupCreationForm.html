@@ -1,0 +1,95 @@
+<html>
+<head>
+  <style>
+  .container1 input[type=text] {
+  padding:5px 0px;
+  margin:5px 5px 5px 0px;
+  }
+
+  .add_form_field
+  {
+      background-color: #1c97f3;
+      border: none;
+      color: white;
+      padding: 8px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+   border:1px solid #186dad;
+  }
+
+  input{
+      border: 1px solid #1c97f3;
+      width: 260px;
+      height: 40px;
+   margin-bottom:14px;
+  }
+
+  .delete{
+      background-color: #fd1200;
+      border: none;
+      color: white;
+      padding: 5px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+  }
+  </style>
+</head>
+
+<body>
+
+    Select a Group Name:
+    <input type="text" name="group name">
+    <br>
+    Search for other Synke.io memebers by e-mail to join your group:<br>
+    Number of Members:
+    <input type="text" id="numberMembers" name="numMembers" value="">
+    <a href="" id="addFields" onclick="addFields()">Add Member Fields</a> <br>
+    <div id="container"></div>
+
+
+    <input type="button" name="member validation" value="Add Member" onclick="memberValidate()">
+    <br>
+
+  <script type='text/javascript'>
+    function memberValidate() {
+
+    }
+
+    function addFields(){
+        console.log("into addFields");
+        // Number of inputs to create
+        var number = document.getElementById("numberMembers").value;
+        // Container <div> where dynamic content will be placed
+        var container = document.getElementById("container");
+        // Clear previous contents of the container
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        for (i = 0;i < number; i++){
+            // Append a node with a random text
+            container.appendChild(document.createTextNode("Member " + (i+1)));
+            // Create an <input> element, set its type and name attributes
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "Member" + i;
+            container.appendChild(input);
+            // Append a line break
+            container.appendChild(document.createElement("br"));
+        }
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>
