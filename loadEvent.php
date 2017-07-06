@@ -12,7 +12,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
+//check if this is the best initialization
 $dbEventName = 0;
 $dbGroupName = "";
 $dbStartDate = "";
