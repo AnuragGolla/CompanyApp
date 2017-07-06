@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Calendar API Quickstart</title>
+    <meta charset='utf-8' />
+  </head>
+  <body>
+    <script>
+    function eTime(start, end) {
+      this.start = start;
+      this.end = end;
+
+    }
+
+    function algorithm(busy, timeLimit){
+
+      
+
+
+    var dateStart = time.limit.start.getDate();
+    var dateEnd = time.limit.end.getDate();
+    var monthStart = time.limit.start.getMonth();
+    var monthEnd = time.limit.end.getMonth();
+
+     for(var j=busy.length-1; j>=0; j--){
+       if ((busy[j].start.getMonth()) < monthStart){
+         busy.splice(j,1);
+       }
+       if ((busy[j].end.getMonth()) > monthEnd){
+         busy.splice(j,1);
+       }
+       if ((busy[j].start.getDate()) < dateStart){
+         busy.splice(j,1);
+       }
+       if ((busy[j].end.getDate()) > dateEnd){
+         busy.splice(j,1);
+       }
+     }
+
+      busy.sort();
+
+      //cleans busy up so that it returns all seperate blocked events.
+      var i = (busy.length-1);
+      while(i>=0){
+        var a = i;
+
+        while(busy[a].start<busy[a-1].end){
+
+          if(busy[a].end > busy[a-1]){
+            busy[a-1].end = busy[a].end;
+            busy.splice(a,a+1);
+            a--;
+          }
+          else{
+            busy[a-1].end = busy[a-1].end;
+            busy.splice(a,a+1);
+            a--;
+          }
+          a--;
+          i=a;
+        }
+
+      }
+
+      //takes the time limits and returns busy as an array that keeps only the available times.
+      var hourStart = timeLimit.start.getHours();
+      var hourEnd = timeLimit.end.getHours();
+
+
+      var c = 0;
+      while (c < busy.length){
+        if ((busy[c].start.getHours()) <= hourStart){
+          busy[c].start.setHours(hourStart);
+        }
+        if ((busy[c].start.getDate()) <= dateStart){
+          busy[c].start.setDate(dateStart);
+        }
+        if ((busy[c].start.getMonth()) <= monthStart){
+          busy[c].start.setMonth(monthStart);
+        }
+        if ((busy[c].end.getHours()) >= hourEnd){
+          busy[c].end.setHours(hourEnd);
+        }
+        if ((busy[c].end.getHours()) >= dateEnd){
+          busy[c].end.setDate(dateEnd);
+        }
+        if ((busy[c].end.getHours()) >= monthEnd){
+          busy[c].end.setMonth(monthEnd);
+        }
+        c++;
+      }
+
+      return (busy);
+    }
+
+
+
+
+
+
+    </script>
+
+
+  </body>
+</html>
