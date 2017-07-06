@@ -78,7 +78,18 @@
         console.log(eventEndTime);
         console.log(location);
         console.log(meetingLength);
-        $.post('loadEvent.php', {event_Name: eventName, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_tion: location});
+        //$.post('loadEvent.php', {event_Name: eventName, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_tion: location});
+
+        window.location.href = "loadEvent.php?event_Name=" + eventName;
+        window.location.href = "loadEvent.php?group_Name=" + groupName;
+        window.location.href = "loadEvent.php?event_Start_Date=" + eventStartDate;
+        window.location.href = "loadEvent.php?event_End_Date=" + eventEndDate;
+        window.location.href = "loadEvent.php?event_Start_Time=" + eventStartTime;
+        window.location.href = "loadEvent.php?event_End_Time=" + eventStartDate;
+        window.location.href = "loadEvent.php?loca_Tion=" + location;
+        window.location.href = "loadEvent.php?meeting_Length=" + meetingLength;
+
+        console.log("got past post");
         //REDIRECT HERE TO ALGIORITM
       }
     </script>
