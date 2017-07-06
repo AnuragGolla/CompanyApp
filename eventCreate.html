@@ -42,9 +42,10 @@
 
       .buttonRun{
         position: absolute;
-
-        height:70%;
-        width: 60%;
+        top:85%;
+        left:45%;
+        height:10%;
+        width: 10%;
       }
       .imageHome{
         position: absolute;
@@ -71,6 +72,7 @@
         var eventStartTime = document.getElementById("eventStartTime").value;
         var eventEndTime = document.getElementById("eventEndTime").value;
         var location = document.getElementById("location").value;
+        var meetingLength = document.getElementById("meetingLength").value;
 
         console.log(eventName);
         console.log(groupName);
@@ -136,15 +138,19 @@
                 <i class="globe icon"></i>
               </div></td>
             <td>
-              <button class="ui inverted blue labeled icon button buttonRun" onclick="runThis()">
-                <i class="add to calendar icon"></i>
-                Create Event
-              </button>
-            </td>
+              <td><h4>Meeting Length </h4>
+                <div class="ui left icon input ">
+                  <input type="time" id="meetingLength" placeholder="meetingLength 0 - 12 hours">
+                  <i class="globe icon"></i>
+                </div></td>
+              <td>
           </tr>
         </tbody>
       </table>
-      <br>
+      <button class="ui inverted blue labeled icon button buttonRun" onclick="runThis()">
+        <i class="add to calendar icon"></i>
+        Create Event
+      </button>
 
 
 
