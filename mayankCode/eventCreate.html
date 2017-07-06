@@ -26,7 +26,9 @@
         console.log(eventEndTime);
         console.log(location);
 
-        if (eventName)
+        if (eventName.value == null){
+          document.getElementById("test").innerHTML = "error";
+        }
 
 
 
@@ -34,7 +36,7 @@
 
     </script>
       <h4>eventName </h4>
-      <input type="text" id="eventName"><div id="ErroreventName"></div></input><br>
+      <input type="text" id="eventName"><div id="test"></div><br>
       <h4>groupName </h4>
       <input type="text" id="groupName"></input><br>
       <h4>eventStartDate </h4>
