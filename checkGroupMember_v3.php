@@ -13,6 +13,7 @@ if (!$conn) {
 }
 
   include 'groupCreationForm_v3.html';
+  echo "<div id='phpsqlSection'>";
 
 
   $enterGroupName = $_REQUEST['groupName'];
@@ -36,13 +37,23 @@ if (!$conn) {
   $addActivity = "INSERT INTO synkeioGroups (groupName, userEmail)
   VALUES ('$enterGroupName', '$enterMemberEmail');";
 
+  if ($enterGroupName =="") {
+    echo "Please enter the group name to view the group and add a Synke.io member email to add the member to the group.";
+  } elseif ($enterMemberEmail=="" && $enterGroupName !=="") {
+    echo "";
+  } elseif ($num_rows > 0) {
+    mysqli_query($conn, $addActivity);
+  } else {
+    echo "<br>Error: This email address is not a registered Synke.io user. Please try again.";
+  }
 
-  if ($num_rows > 0) {
+
+  /*if ($num_rows > 0) {
     mysqli_query($conn, $addActivity);
     //include 'groupCreationForm_v3.html';
   } else {
     echo "<br>Error: This email address is not a registered Synke.io user. Please try again.";
-  }
+  }*/
 
   $sql = "SELECT DISTINCT userEmail
   FROM synkeioGroups
@@ -53,7 +64,7 @@ if (!$conn) {
   //var_dump($userList);
   //echo "<br>" . $userList["current_field"];
 
-echo "<br><br><br><div id='phpsqlSection'> <h3>Group Members: </h3><br>";
+  echo "<h3>Group Members: </h3><br>";
 
   while ($row = mysqli_fetch_assoc($userList)) {
     //echo ($row["userEmail"]) . "<br>";
