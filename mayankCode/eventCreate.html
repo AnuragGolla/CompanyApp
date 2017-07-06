@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Calendar API Quickstart</title>
+    <meta charset='utf-8' />
+  </head>
+  <body>
+    <p>create events</p>
+    <script>
+
+      function runThis() {
+        var errorFlag = false;
+        var eventName = document.getElementById("eventName").value;
+        var groupName = document.getElementById("groupName").value;
+        var eventStartDate = document.getElementById("eventStartDate").value;
+        var eventEndDate = document.getElementById("eventEndDate").value;
+        var eventStartTime = document.getElementById("eventStartTime").value;
+        var eventEndTime = document.getElementById("eventEndTime").value;
+        var location = document.getElementById("location").value;
+
+        console.log(eventName);
+        console.log(groupName);
+        console.log(eventStartDate);
+        console.log(eventEndDate);
+        console.log(eventStartTime);
+        console.log(eventEndTime);
+        console.log(location);
+
+        if (eventName)
+
+
+
+      }
+
+    </script>
+      <h4>eventName </h4>
+      <input type="text" id="eventName"><div id="ErroreventName"></div></input><br>
+      <h4>groupName </h4>
+      <input type="text" id="groupName"></input><br>
+      <h4>eventStartDate </h4>
+      <input type="date" id="eventStartDate"></input><br>
+      <h4>eventEndDate </h4>
+      <input type="date" id="eventEndDate"></input><br>
+      <h4>eventStartTime </h4>
+      <input type="time" id="eventStartTime"></input><br>
+      <h4>eventEndTime </h4>
+      <input type="time" id="eventEndTime"></input><br>
+      <h4>location </h4>
+      <input type="text" id="location"></input><br>
+      <button  onclick="runThis()">Create Event</button>
+
+  </body>
+</html>
