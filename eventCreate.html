@@ -37,9 +37,7 @@
         left:25%;
         width: 50%;
         height: 60%;
-
       }
-
       .buttonRun{
         position: absolute;
         top:85%;
@@ -62,7 +60,6 @@
   </head>
   <body>
     <script>
-
       function runThis() {
         var errorFlag = false;
         var eventName = document.getElementById("eventName").value;
@@ -73,7 +70,6 @@
         var eventEndTime = document.getElementById("eventEndTime").value;
         var location = document.getElementById("location").value;
         var meetingLength = document.getElementById("meetingLength").value;
-
         console.log(eventName);
         console.log(groupName);
         console.log(eventStartDate);
@@ -81,13 +77,10 @@
         console.log(eventStartTime);
         console.log(eventEndTime);
         console.log(location);
-
-
+        console.log(meetingLength);
         $.post('loadEvent.php', {event_Name: eventName, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_tion: location});
-
         //REDIRECT HERE TO ALGIORITM
       }
-
     </script>
       <div class="header"><button class="back ui inverted button"> Back</button><img class="imageHome" src="./assets/logo_2.jpg"></div>
       <table class=formTable>
@@ -140,7 +133,8 @@
             <td>
               <td><h4>Meeting Length </h4>
                 <div class="ui left icon input ">
-                  <input type="time" id="meetingLength" placeholder="meetingLength 0 - 12 hours">
+
+                  <input type="text" id="meetingLength" placeholder="meetingLength in minutes">
                   <i class="globe icon"></i>
                 </div></td>
               <td>
