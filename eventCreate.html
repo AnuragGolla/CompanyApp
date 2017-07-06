@@ -3,6 +3,8 @@
   <head>
     <title>Google Calendar API Quickstart</title>
     <meta charset='utf-8' />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <p>create events</p>
@@ -26,13 +28,19 @@
         console.log(eventEndTime);
         console.log(location);
 
+
+
         if (eventName.value == null){
           document.getElementById("test").innerHTML = "error";
         }
 
+        $.post('loadEvent.php', {event_Name: eventName, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_tion: location});
+
 
 
       }
+
+//Don't we need some sort of length to this event????****
 
     </script>
       <h4>eventName </h4>
