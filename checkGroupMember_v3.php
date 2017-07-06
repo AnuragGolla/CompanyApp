@@ -12,36 +12,85 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
-$enterGroupName = $_REQUEST['groupName'];
-$enterMemberEmail = $_REQUEST['addedMember'];
-
-//echo "Group Name: " . $enterGroupName;
-//echo "<br>Member Email: " . $enterMemberEmail;
-
-
-$checkMember = "SELECT *
-FROM googleUsers
-WHERE email = '$enterMemberEmail';";
-
-
-$queryObject = mysqli_query($conn, $checkMember);
-
-$num_rows = mysqli_num_rows($queryObject);
-
-//echo "Rows: $num_rows";
-
-
-$addActivity = "INSERT INTO synkeioGroups (groupName, userEmail)
-VALUES ('$enterGroupName', '$enterMemberEmail');";
-
-
-if ($num_rows > 0) {
-  mysqli_query($conn, $addActivity);
   include 'groupCreationForm_v3.html';
-} else {
-  echo "<br>Error: This email address is not a registered Synke.io user. Please try again.";
-}
+
+
+  $enterGroupName = $_REQUEST['groupName'];
+  $enterMemberEmail = $_REQUEST['addedMember'];
+
+  //echo "Group Name: " . $enterGroupName;
+  //echo "<br>Member Email: " . $enterMemberEmail;
+
+
+  $checkMember = "SELECT *
+  FROM googleUsers
+  WHERE email = '$enterMemberEmail';";
+
+
+  $queryObject = mysqli_query($conn, $checkMember);
+
+  $num_rows = mysqli_num_rows($queryObject);
+
+  //echo "Rows: $num_rows";
+
+  $addActivity = "INSERT INTO synkeioGroups (groupName, userEmail)
+  VALUES ('$enterGroupName', '$enterMemberEmail');";
+
+
+  if ($num_rows > 0) {
+    mysqli_query($conn, $addActivity);
+    //include 'groupCreationForm_v3.html';
+  } else {
+    echo "<br>Error: This email address is not a registered Synke.io user. Please try again.";
+  }
+
+  $sql = "SELECT DISTINCT userEmail
+  FROM synkeioGroups
+  WHERE groupName = '$enterGroupName';";
+
+  $userList = mysqli_query($conn, $sql);
+
+  //var_dump($userList);
+  //echo "<br>" . $userList["current_field"];
+
+echo "<br><br><br><div id='phpsqlSection'> <h3>Group Members: </h3><br>";
+
+  while ($row = mysqli_fetch_assoc($userList)) {
+    //echo ($row["userEmail"]) . "<br>";
+    $e = $row["userEmail"];
+
+    $nameSelector = "SELECT fullName
+    FROM googleUsers
+    WHERE email = '$e';";
+
+    $a = mysqli_query($conn, $nameSelector);
+    //var_dump($a);
+    //var_dump($a["current_field"]);
+    $b = mysqli_fetch_assoc($a);
+    //var_dump($b);
+    //echo ($b["fullName"]);
+    echo "<div class='newUser'>";
+    echo $b["fullName"];
+    echo "</div>";
+  }
+
+  echo "</div></div>";
+
+mysqli_close($conn);
+
+
+
+//  $theList = mysql_fetch_assoc("$userList");
+
+/*
+  while($row = mysqli_fetch_assoc($resultado))
+  {
+      print_r($row);
+      // Or print any specific column like:
+      echo $row['col_name'];
+  }
+*/
+
 
 
 /*
@@ -117,5 +166,5 @@ $showGroup = "SELECT (email)
 FROM synkeioGroups"
 */
 
-mysqli_close($conn);
+
 ?>

@@ -1,69 +1,127 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="./js-cookie-master"></script>
+
 
   <style>
-  .container1 input[type=text] {
-  padding:5px 0px;
-  margin:5px 5px 5px 0px;
-  }
 
-  .add_form_field
-  {
-      background-color: #1c97f3;
-      border: none;
-      color: white;
-      padding: 8px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-   border:1px solid #186dad;
-  }
-
-  input{
-      border: 1px solid #1c97f3;
-      width: 260px;
-      height: 40px;
+input{
+  border: 1px solid green;
+  width: 260px;
+  height: 40px;
    margin-bottom:14px;
-  }
+}
+body{
+background-color: #2ecc71;
+}
 
-  .delete{
-      background-color: #fd1200;
-      border: none;
-      color: white;
-      padding: 5px 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14px;
-      margin: 4px 2px;
-      cursor: pointer;
-  }
+
+.header{
+  position: absolute;
+  background-color: black;
+  left:0%;
+  top:0%;
+  height:10%;
+  width:100%;
+  z-index: 10;
+}
+
+
+#mainSection {
+  position: absolute;
+  left:0%;
+  top:10%;
+  height:90%;
+  width:100%;
+}
+
+#formSection {
+  position: absolute;
+  left:00%;
+  top:0%;
+  height:40%;
+  width:100%;
+  background-color: #3498db;
+}
+.formTrue{
+  position: absolute;
+  left:0%;
+  top:5%;
+  height:90%;
+  width:100%;
+  text-align:center;
+}
+
+#phpsqlSection {
+  position:absolute;
+  left:30%;
+  top:40%;
+  height:70%;
+  width:40%;
+  text-align: center;
+
+}
+.newUser{
+  font-size: 2.5vw;
+  position: relative;
+
+  height:10%;
+
+}
+
+.newUser:hover{
+    background-color: white;
+}
+.home{
+  position: absolute;
+  left:45%;
+  width:10%;
+  height: 70%;
+  top:15%;
+}
+
+
+
   </style>
+  <link href="./mayankCode/assets/button/button.css" rel="stylesheet">
 </head>
 
 <body>
+<div class="header"><button class=" ui button inverted home" onclick="window.location.href='./landingPage.html'">Home</button></div>
+<div id="mainSection">
+  <div id="formSection">
+    <div class="formTrue">
+    <form id="groupMakerForm" action="checkGroupMember_v3.php" method="POST" />
+      Select a Group Name:<br>
+      <br>
+      <input type="text" name="groupName" id="search" />
+      <br>
+      Search for other Synke.io memebers by e-mail to join your group:
+      <br><br>
+      <input type="text" name="addedMember" value="">
+      <br>
+      <button type="submit" value="Add Member" name="memberAdder" class="white inverted ui button">Add Member</button>
+    </form>
+  </div>
+  </div>
 
-  <form action="checkGroupMember_v3.php" method="POST">
-    Select a Group Name:
-    <br>
-    <input type="text" name="groupName" id="search">
-    <br>
-    Search for other Synke.io memebers by e-mail to join your group:
-    <br>
-    <input type="text" name="addedMember" value="">
-    <br>
-    <input type="submit" value="Add Member" onclick="listGroup.php">
-  </form>
 
 
 
+<!--
     <script type='text/javascript'>
-    try{
+
+        document.getElementById("groupMakerForm").addEventListener("submit", function(event) {
+          //document.getElementById("list").innerHTML = "function inside of the display works";
+          $.ajax({url: "checkGroupMember_v3.php"}).done(function( html ) {
+            $("list").append(html);
+          });
+        });
+
+
+
+
+  /*  try{
       $.cookie("clientcookie",'test'); //setting cookie in browser
 
       if ($.cookie("clientcookie")) {
@@ -74,7 +132,7 @@
     } catch(e) {
       alert(e);
     }
-
+*/
 
       function makeGroup() {
 
@@ -108,6 +166,8 @@
       }
   }
   </script>
+
+-->
 
 
 <!--
