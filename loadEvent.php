@@ -13,15 +13,12 @@ if (!$conn) {
     echo "Connection failed echo";
 }
 
-
-
-//check if this is the best initialization
 $dbEventName = "";
 $dbGroupName = "";
-$dbStartDate = NULL;
-$dbEndDate = NULL;
-$dbStartTime = NULL;
-$dbEndTime = NULL;
+$dbStartDate = "";
+$dbEndDate = "";
+$dbStartTime = "";
+$dbEndTime = "";
 $dbLocation = "";
 $dbMeetingLength = 0;
 
@@ -67,7 +64,6 @@ if (isset($_POST['meeting_Length']))
 }
 
 
-/*
   $dbEventName = $_POST["event_Name"];
   $dbGroupName = $_POST["group_Name"];
   $dbStartDate = $_POST["event_Start_Date"];
@@ -76,10 +72,9 @@ if (isset($_POST['meeting_Length']))
   $dbEndTime = $_POST["event_End_Time"];
   $dbLocation = $_POST["loca_Tion"];
   $dbMeetingTime = $_POST["meeting_Length"];
-*/
 
 
-echo "$dbEventName" . "<br>" . "$dbGroupName" . "<br>" . "$dbStartDate" . "<br>" . "$dbEndDate" . "<br>" . "$dbStartTime" . "<br>" . "$dbEndTime" . "<br>" . "$dbLocation" . "<br>" . "$dbMeetingLength";
+//echo "$dbEventName" . "<br>" . "$dbGroupName" . "<br>" . "$dbStartDate" . "<br>" . "$dbEndDate" . "<br>" . "$dbStartTime" . "<br>" . "$dbEndTime" . "<br>" . "$dbLocation" . "<br>" . "$dbMeetingLength";
 
 
 /*
@@ -96,7 +91,7 @@ $dbMeetingTime = 120;
   //echo "<script>console.log($dbEventName)</script>";
 
 
-/*
+
 $eventData = "INSERT INTO synkeioEvents (GroupName, EventName, StartDate, EndDate, StartTime, EndTime, Location, meetingTime)
 VALUES ('$dbGroupName', '$dbEventName', '$dbStartDate', '$dbEndDate', '$dbStartTime', '$dbEndTime', '$dbLocation', '$dbMeetingTime');";
 
@@ -120,6 +115,6 @@ if ($num_rows > 0) {
   echo "Error: The Group Name that you entered does not exist. Please try again.";
 }
 
-*/
+
 mysqli_close($conn);
 ?>

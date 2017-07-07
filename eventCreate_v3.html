@@ -79,8 +79,8 @@
         console.log(location);
         console.log(meetingLength);
 
-        //$.post('loadEvent.php', {event_Name: document.getElementById("eventName").value, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_Tion: location, meeting_Length: meetingLength});
-
+        $.post('loadEvent.php', {event_Name: eventName, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_Tion: location, meeting_Length: meetingLength});
+/*
         window.location.href = "loadEvent.php?event_Name=" + document.getElementById("eventName").value;
         window.location.href = "loadEvent.php?group_Name=" + groupName;
         window.location.href = "loadEvent.php?event_Start_Date=" + eventStartDate;
@@ -89,10 +89,8 @@
         window.location.href = "loadEvent.php?event_End_Time=" + eventStartDate;
         window.location.href = "loadEvent.php?loca_Tion=" + location;
         window.location.href = "loadEvent.php?meeting_Length=" + meetingLength;
-
+*/
         console.log("got past post");
-
-        $.post('loadEvent.php', {event_Name: eventName, group_Name: groupName, event_Start_Date: eventStartDate, event_End_Date: eventEndDate, event_Start_Time: eventStartTime, event_End_Time: eventEndTime, loca_tion: location});
 
         //REDIRECT HERE TO ALGIORITM
       }
@@ -145,14 +143,12 @@
                 <input type="text" id="location" placeholder="Location of event">
                 <i class="globe icon"></i>
               </div></td>
-            <td>
               <td><h4>Meeting Length </h4>
                 <div class="ui left icon input ">
 
                   <input type="text" id="meetingLength" placeholder="meetingLength in minutes">
                   <i class="globe icon"></i>
                 </div></td>
-              <td>
           </tr>
         </tbody>
       </table>
