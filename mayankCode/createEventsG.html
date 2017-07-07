@@ -87,10 +87,10 @@
               var b = new eTime(startEventTimes[a],endEventTimes[a]);
               busy.push(b);
             }
+            var newArray = []
+            newArray = sortETime(busy);
 
-            busy = sortETime(busy);
-
-            return busy;
+            return newArray;
 
           } else {
             startEventTimes = null;
