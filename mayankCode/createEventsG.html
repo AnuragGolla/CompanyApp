@@ -77,6 +77,7 @@
           var endEventTimes = [];
           var events = response.result.items;
           //check to make sure that there are events in time frame
+          var newArray = [];
           if (events.length > 0) {
             var busy = [];
             for (i = 0; i < events.length; i++) {
@@ -89,7 +90,7 @@
               var b = new eTime(startEventTimes[a],endEventTimes[a]);
               busy.push(b);
             }
-            var newArray = []
+
             newArray = sortETime(busy);
 
             return newArray;
@@ -97,7 +98,7 @@
           } else {
             startEventTimes = null;
             endEventTimes = null;
-            return null;
+            return newArray;
           }
         });
       }
