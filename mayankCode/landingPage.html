@@ -1,55 +1,29 @@
 <html>
 <head>
   <title>Landing Page 2</title>
-  <link rel="stylesheet" type="text/css" href="./css/landingCSS.css">
+  <link rel="stylesheet" type="text/css" href="./css/landingPage.css">
   <link rel="stylesheet" type="text/css" href="./assets/button/button.css">
   <link rel="stylesheet" type="text/css" href="./assets/icon/icon.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
 
-  <div class="header">
-    <table class="headerButtonsTable">
-      <tbody>
-        <tr>
-          <td>
-            <button class="blue ui button scrollingHeaderSignInElements" onclick="window.location.href='./signUp.html'">Create Group</button>
-          </td>
-          <td>
-            <button class="blue ui button scrollingHeaderSignInElements" onclick="window.location.href='./signUp.html'">Create Event</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="headerSignOut">
-    <table class="headerSignOutTable">
-      <tbody>
-        <tr>
-          <td>
-            <button class="blue ui button scrollingHeaderSignInElements" onclick="window.location.href='./signUp.html'">Sign Out</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="header"></div>
+  <button class="blue ui button createGroupButton" onclick="window.location.href='./createGroup.html'">Create Group</button>
+  <button class="blue ui button createEventButton" onclick="window.location.href='./createEvents.html'">Create Event</button>
+  <a href = "./index.html"><img class="homeImage" src="logo_2.jpg" alt="synke.io"></a>
+  <button class="inverted  ui button manageCalendarButton" onclick="window.open('https://calendar.google.com')">Manage Your Calendar</button>
 
-  <div class="pendingGroups">
-  </div>
+  <div class="groups"><u>Groups</u></div>
 
-  <div class="calendar">
-  </div>
 
-  <div class="upcomingEvents">
-  </div>
 
-  <div class="verticalLine">
-  </div>
-  <div class="horizontalLine">
-  </div>
-  <div class="top hBorder"></div>
-  <div class="bottom hBorder"></div>
-  <div class="left vBorder"></div>
-  <div class="right vBorder"></div>
+  <div class="upcomingEvents"><u>Upcoming Events</u></div>
+
+
+
+  <div class="synkeioEvents"><u>synke.io Events</u></div>
+
 
 </body>
 </html>
