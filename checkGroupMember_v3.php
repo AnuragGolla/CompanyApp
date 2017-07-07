@@ -31,6 +31,7 @@ if (!$conn) {
   $queryObject = mysqli_query($conn, $checkMember);
 
   $num_rows = mysqli_num_rows($queryObject);
+  var_dump($num_rows);
 
   //echo "Rows: $num_rows";
 
