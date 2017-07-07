@@ -16,6 +16,7 @@
 <button type="submit" onclick="loadProfile()">loadProfile</button> <!-- MUST WRITE THIS FUNCTION UNDER SIGNIN CHANGE NOT BUTTON -->
 
     <script>
+      var test = "";
       var userObject = "default";
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -29,8 +30,7 @@
         console.log("Email: " + profile.getEmail());
         var id_token = googleUser.getAuthResponse().id_token; // The ID token you need to pass to your backend:
         console.log("ID Token: " + id_token);
-
-        loadProfile(); //full load of user info to DB
+        getUserEvents();
       };
 
 
@@ -42,9 +42,10 @@
           console.log(userObject.wea);
           console.log(userObject.U3);
 
+          var eventArr = test;
+          //console.log(typeof eventArr);
+          //console.log(eventArr);
 
-          var eventArr = getUserEvents();
-          var eventArrStr = JSON.stringify(eventArr);
 
 
       /*    var user_Id = userObject.Eea;
@@ -57,7 +58,7 @@
           window.location.href="serverstuff.php?user_GivenName=" + userObject.ofa;
           window.location.href="serverstuff.php?user_FamilyName=" + userObject.wea;
           window.location.href="serverstuff.php?user_Email=" + userObject.U3; */
-          $.post('serverstuff.php', {user_Id: userObject.Eea, user_FullName: userObject.ig, user_GivenName: userObject.ofa, user_FamilyName: userObject.wea, user_Email: userObject.U3, user_GoogleEvents: eventArrStr});
+          $.post('serverstuff.php', {user_Id: userObject.Eea, user_FullName: userObject.ig, user_GivenName: userObject.ofa, user_FamilyName: userObject.wea, user_Email: userObject.U3, user_GoogleEvents: eventArr});
       /*    $.post('serverstuff.php', {user_FullName: userObject.ig});
           $.post('serverstuff.php', {user_GivenName: userObject.ofa});
           $.post('serverstuff.php', {user_FamilyName: userObject.wea});
@@ -71,14 +72,21 @@
        function eTime(start, end) {
          this.start = start;
          this.end = end;
-         this.elap = (this.end.getHours()-this.start.getHours());
+
        }
        //sort an array of eTime objects and converts it to strings.
        function sortETime(array) {
+
          for(var i = 0; i<array.length;i++){
            array[i] = JSON.stringify(array[i]);
          }
-         return (array.sort());
+         array.sort();
+         for(var i = 0; i<array.length;i++){
+           array[i] = JSON.parse(array[i]);
+         }
+         var a = JSON.stringify(array);
+         return a;
+
        }
 
        //creates a date in iso string format that is exactly one year from current time.
@@ -103,6 +111,49 @@
             var endEventTimes = [];
             var events = response.result.items;
             //check to make sure that there are events in time frame
+            var newArray = [];
+            if (events.length > 0) {
+              var busy = [];
+              for (i = 0; i < events.length; i++) {
+                var event = events[i];
+                startEventTimes.push(event.start.dateTime);
+                endEventTimes.push(event.end.dateTime);
+              }
+
+              for (a=0;a<startEventTimes.length; a++){
+                var b = new eTime(startEventTimes[a],endEventTimes[a]);
+                busy.push(b);
+              }
+
+              newArray = sortETime(busy);
+              test = newArray;
+              loadProfile(); //full load of user info to DB
+
+            } else {
+              startEventTimes = null;
+              endEventTimes = null;
+              test = newArray;
+              loadProfile(); //full load of user info to DB
+
+            }
+          });
+        }
+
+
+        //will either return null for no events, or an array of eTime objects. eTime objects are a pair of start and end times for events.
+        function listUpcomingEvents(startDate, endDate) {
+          gapi.client.calendar.events.list({
+            'calendarId': 'primary',
+            'timeMin': startDate,
+            'timeMax': endDate,
+            'showDeleted': false,
+            'singleEvents': true,
+            'orderBy': 'startTime'
+          }).then(function(response) {
+            var startEventTimes = [];
+            var endEventTimes = [];
+            var events = response.result.items;
+
             if (events.length > 0) {
               var busy = [];
               for (i = 0; i < events.length; i++) {
@@ -127,6 +178,8 @@
             }
           });
         }
+
+
 
 
 
