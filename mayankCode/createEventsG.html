@@ -33,6 +33,7 @@
     }
     function updateSigninStatus(isSignedIn) {
       if (isSignedIn) {
+        console.log("here");
         getUserEvents();
       } else {
         console.log("this should not happen");
@@ -43,13 +44,14 @@
      function eTime(start, end) {
        this.start = start;
        this.end = end;
-       this.elap = (this.end.getHours()-this.start.getHours());
+
      }
      //sort an array of eTime objects and converts it to strings.
      function sortETime(array) {
        for(var i = 0; i<array.length;i++){
          array[i] = JSON.stringify(array[i]);
        }
+       console.log(array.sort());
        return (array.sort());
      }
 
