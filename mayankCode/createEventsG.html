@@ -43,6 +43,7 @@
      function eTime(start, end) {
        this.start = start;
        this.end = end;
+       this.elap = (this.end.getHours()-this.start.getHours());
      }
      //sort an array of eTime objects and converts it to strings.
      function sortETime(array) {

@@ -6,98 +6,116 @@
   </head>
   <body onload="algorithm();">
     <script>
-    function eTime(start, end) {
-      this.start = start;
-      this.end = end;
-
-    }
-
-    function sortETime(array) {
-      for(var i = 0; i<array.length;i++){
-        array[i] = JSON.stringify(array[i]);
-      }
-      array.sort();
-      for(var i = 0; i<array.length;i++){
-        array[i] = JSON.parse(array[i]);
+      function eTime(start, end) {
+        this.start = start;
+        this.end = end;
+        this.elap = (this.end.getHours()-this.start.getHours());
       }
 
-      return array;
+      function sortETime(array) {
 
-    }
+        for(var i = 0; i<array.length;i++){
+          array[i] = JSON.stringify(array[i]);
+        }
+        array.sort();
+        for(var i = 0; i<array.length;i++){
+          array[i] = JSON.parse(array[i]);
+        }
 
-    function algorithm(busy, timeLimit){
+        return array;
 
-      //pull
+      }
+
+      function algorithm(){
+
+        //pull, busy arrays from users, eventstartdate, eventenddate, eventstarttime, eventendtime, meetingLength, groupname, location
+
+        //combine all the busy arrays from users into one big array called busy
 
 
+        //deletes any events from the big array busy that dont fall within right dates.
+        var dateStart = eventStartDate.start.getDate();
+        var dateEnd = eventEndDate.end.getDate();
+        var monthStart = eventStartDate.start.getMonth();
+        var monthEnd = eventEndDate.end.getMonth();
 
-    var dateStart = time.limit.start.getDate();
-    var dateEnd = time.limit.end.getDate();
-    var monthStart = time.limit.start.getMonth();
-    var monthEnd = time.limit.end.getMonth();
-
-     for(var j=busy.length-1; j>=0; j--){
-       if ((busy[j].start.getMonth()) < monthStart){
-         busy.splice(j,1);
-       }
-       if ((busy[j].end.getMonth()) > monthEnd){
-         busy.splice(j,1);
-       }
-       if ((busy[j].start.getDate()) < dateStart){
-         busy.splice(j,1);
-       }
-       if ((busy[j].end.getDate()) > dateEnd){
-         busy.splice(j,1);
-       }
-     }
-
-      sortETime(busy);
-
-      //cleans busy up so that it returns all seperate blocked events.
-      var i = (busy.length-1);
-      while(i>=0){
-        var a = i;
-
-        while(busy[a].start<busy[a-1].end){
-
-          if(busy[a].end > busy[a-1]){
-            busy[a-1].end = busy[a].end;
-            busy.splice(a,a+1);
-            a--;
+        for(var j=busy.length-1; j>=0; j--){
+          if ((busy[j].start.getMonth()) < monthStart){
+            busy.splice(j,1);
           }
-          else{
-            busy[a-1].end = busy[a-1].end;
-            busy.splice(a,a+1);
-            a--;
+          if ((busy[j].end.getMonth()) > monthEnd){
+            busy.splice(j,1);
           }
-          a--;
-          i=a;
+          if ((busy[j].start.getDate()) < dateStart){
+            busy.splice(j,1);
+          }
+          if ((busy[j].end.getDate()) > dateEnd){
+            busy.splice(j,1);
+          }
         }
 
-      }
+        //sorts all the events so that the following events increases.
+        sortETime(busy);
 
-      //takes the time limits and returns busy as an array that keeps only the available times.
-      var hourStart = timeLimit.start.getHours();
-      var hourEnd = timeLimit.end.getHours();
+        //cleans busy up so that it returns all seperate blocked events.
+        var i = (busy.length-1);
+        while(i>=0){
+          var a = i;
 
+          while(busy[a].start<busy[a-1].end){
+            if(busy[a].end > busy[a-1]){
+              busy[a-1].end = busy[a].end;
+              busy.splice(a,a+1);
+              a--;
+            }
+            else{
+              busy[a-1].end = busy[a-1].end;
+              busy.splice(a,a+1);
+              a--;
+            }
+            a--;
+            i=a;
+          }
 
-      var c = 0;
-      while (c < busy.length){
-        if ((busy[c].start.getHours()) <= hourStart){
-          busy[c].start.setHours(hourStart);
         }
 
-        if ((busy[c].end.getHours()) >= hourStart){
-          busy[c].end.setHours(hourEnd);
+        //takes the time limits and returns busy as an array that keeps only the available times.
+        var hourStart = parseInt(eventStartTime.slice(0,2));
+        var hourEnd = parseInt(eventEndTime.slice(0,2));
+        var c = 0;
+        while (c < busy.length){
+          if ((busy[c].start.getHours()) <= hourStart){
+            busy[c].start.setHours(hourStart);
+          }
+
+          if ((busy[c].end.getHours()) >= hourStart){
+            busy[c].end.setHours(hourEnd);
+          }
+          c++;
         }
-        c++;
-      }
 
-      return (busy);
+        //gives an array of elements that fit into the meeting length.
+        for(var q = busy.length; q>=0; q--){
+          if(busy[q].elap < meetingLength){
+            busy.splice(q,1);
+          }
+        }
 
-      window.location.href = "http://stackoverflow.com";
-      //insert event
-      //REDIRECT to landing page.
+        sortETime(busy);
+
+        //gives a eTime of the first availible meeting time.
+        //WARnING: changes the timing of the first element so it cannot be fully found.
+        var newEndlength = (busy[0].elap - meetingLength)
+        busy[0].end.setHours((busy[0].end.getHours)-newEndlength);
+        var theEvent = new eTime();
+        theEvent.start = busy[0].start;
+        theEvent.end = busy[0].end;
+
+        //insert theEvent into the calendar.
+
+        //REDIRECT to landing page.
+        window.location.href = "http://stackoverflow.com";
+
     }
 
 
