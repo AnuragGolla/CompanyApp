@@ -4,7 +4,7 @@
     <title>Google Calendar API Quickstart</title>
     <meta charset='utf-8' />
   </head>
-  <body>
+  <body onload="algorithm();">
     <script>
     function eTime(start, end) {
       this.start = start;
@@ -12,9 +12,23 @@
 
     }
 
+    function sortETime(array) {
+      for(var i = 0; i<array.length;i++){
+        array[i] = JSON.stringify(array[i]);
+      }
+      array.sort();
+      for(var i = 0; i<array.length;i++){
+        array[i] = JSON.parse(array[i]);
+      }
+
+      return array;
+
+    }
+
     function algorithm(busy, timeLimit){
 
-      
+      //pull
+
 
 
     var dateStart = time.limit.start.getDate();
@@ -37,7 +51,7 @@
        }
      }
 
-      busy.sort();
+      sortETime(busy);
 
       //cleans busy up so that it returns all seperate blocked events.
       var i = (busy.length-1);
@@ -72,25 +86,18 @@
         if ((busy[c].start.getHours()) <= hourStart){
           busy[c].start.setHours(hourStart);
         }
-        if ((busy[c].start.getDate()) <= dateStart){
-          busy[c].start.setDate(dateStart);
-        }
-        if ((busy[c].start.getMonth()) <= monthStart){
-          busy[c].start.setMonth(monthStart);
-        }
-        if ((busy[c].end.getHours()) >= hourEnd){
+
+        if ((busy[c].end.getHours()) >= hourStart){
           busy[c].end.setHours(hourEnd);
-        }
-        if ((busy[c].end.getHours()) >= dateEnd){
-          busy[c].end.setDate(dateEnd);
-        }
-        if ((busy[c].end.getHours()) >= monthEnd){
-          busy[c].end.setMonth(monthEnd);
         }
         c++;
       }
 
       return (busy);
+
+      window.location.href = "http://stackoverflow.com";
+      //insert event
+      //REDIRECT to landing page.
     }
 
 
@@ -99,7 +106,8 @@
 
 
     </script>
+    <SCRIPT>
 
-
+    </script>
   </body>
 </html>
