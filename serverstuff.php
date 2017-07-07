@@ -19,6 +19,7 @@ $userDbFullName = "";
 $userDbGivenName = "";
 $userDbFamilyName = "";
 $userDbEmail = "";
+$userDbGoogleEvents = "";
 
 
 if (isset($_POST['user_Id']))
@@ -45,16 +46,21 @@ if (isset($_POST['user_Email']))
 {
   $userDbEmail = $_POST["user_Email"];
 }
+if (isset($_POST['user_GoogleEvents']))
+{
+  $userDbGoogleEvents = $_POST["user_GoogleEvents"];
+}
 
 $userDbId = $_POST["user_Id"];
 $userDbFullName = $_POST["user_FullName"];
 $userDbGivenName = $_POST["user_GivenName"];
 $userDbFamilyName = $_POST["user_FamilyName"];
 $userDbEmail = $_POST["user_Email"];
+$userDbGoogleEvents = $_POST["user_GoogleEvents"];
 
 
-$profileData = "INSERT INTO googleUsers (ID, fullName, givenName, lastName, email)
-VALUES ('$userDbId', '$userDbFullName', '$userDbGivenName', '$userDbFamilyName', '$userDbEmail');";
+$profileData = "INSERT INTO googleUsers (ID, fullName, givenName, lastName, email, googleEvents)
+VALUES ('$userDbId', '$userDbFullName', '$userDbGivenName', '$userDbFamilyName', '$userDbEmail', '$userDbGoogleEvents');";
 
 
 if (mysqli_query($conn, $profileData)) {
