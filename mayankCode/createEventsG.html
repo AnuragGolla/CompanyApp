@@ -48,11 +48,17 @@
      }
      //sort an array of eTime objects and converts it to strings.
      function sortETime(array) {
+
        for(var i = 0; i<array.length;i++){
          array[i] = JSON.stringify(array[i]);
        }
-       console.log(array.sort());
-       return (array.sort());
+       array.sort();
+       for(var i = 0; i<array.length;i++){
+         array[i] = JSON.parse(array[i]);
+       }
+
+       return array;
+
      }
 
      //creates a date in iso string format that is exactly one year from current time.
@@ -92,7 +98,6 @@
             }
 
             newArray = sortETime(busy);
-
             return newArray;
 
           } else {
