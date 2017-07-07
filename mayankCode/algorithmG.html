@@ -34,10 +34,13 @@
 
 
         //deletes any events from the big array busy that dont fall within right dates.
-        var dateStart = eventStartDate.start.getDate();
-        var dateEnd = eventEndDate.end.getDate();
-        var monthStart = eventStartDate.start.getMonth();
-        var monthEnd = eventEndDate.end.getMonth();
+        eventStartDate.slice(0,3);
+        var d = new Date(eventStartDate.slice(0,3), eventStartDate.slice(6,7);, eventStartDate.slice(9,10);, 0, 0, 0, 0);
+        var e = new Date(eventEndDate.slice(0,3), eventEndDate.slice(6,7);, eventEndDate.slice(9,10);, 23, 59, 59, 999);
+        var dateStart = d.start.getDate();
+        var dateEnd = e.end.getDate();
+        var monthStart = d.start.getMonth();
+        var monthEnd = e.end.getMonth();
 
         for(var j=busy.length-1; j>=0; j--){
           if ((busy[j].start.getMonth()) < monthStart){
