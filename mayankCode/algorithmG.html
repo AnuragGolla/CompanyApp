@@ -4,7 +4,7 @@
     <title>Google Calendar API Quickstart</title>
     <meta charset='utf-8' />
   </head>
-  <body onload="algorithm();">
+
     <script>
       function eTime(start, end) {
         this.start = start;
@@ -27,17 +27,17 @@
       }
 
       function algorithm(){
-
-        //pull, busy arrays from users, eventstartdate, eventenddate, eventstarttime, eventendtime, meetingLength, groupname, location
-
+        console.log("running");
+        //pull,
+        //busy arrays from users = string of arrays of ?arrays? of objects
         //combine all the busy arrays from users into one big array called busy
-
-
+        // groupname
+        //eventstartdate, eventenddate, eventstarttime, eventendtime, meetingLength, location
+        //insert event
         //deletes any events from the big array busy that dont fall within right dates.
 
-        eventStartDate.slice(0,3);
-        var d = new Date(eventStartDate.slice(0,3), eventStartDate.slice(6,7);, eventStartDate.slice(9,10);, 0, 0, 0, 0);
-        var e = new Date(eventEndDate.slice(0,3), eventEndDate.slice(6,7);, eventEndDate.slice(9,10);, 23, 59, 59, 999);
+        var d = new Date(parseInt(eventStartDate.slice(0,3)), parseInt(eventStartDate.slice(6,7)), (eventStartDate.slice(9,10)), 0, 0, 0, 0);
+        var e = new Date(parseInt(eventEndDate.slice(0,3)), parseInt(eventEndDate.slice(6,7)), parseInt(eventEndDate.slice(9,10)), 23, 59, 59, 999);
         var dateStart = d.start.getDate();
         var dateEnd = e.end.getDate();
         var monthStart = d.start.getMonth();
@@ -115,6 +115,9 @@
         theEvent.start = busy[0].start;
         theEvent.end = busy[0].end;
 
+        var theEventStartTime = theEvent.start;
+        var theEventEndTime = theEvent.end;
+
         //insert theEvent into the calendar.
 
         //REDIRECT to landing page.
@@ -123,13 +126,15 @@
     }
 
 
-
-
-
-
     </script>
-    <SCRIPT>
-
+    <body>
+      <p>hello</p>
+    <script>
+      document.onreadystatechange = function(){
+           if(document.readyState === 'complete'){
+             algorithm();
+           }
+      }
     </script>
   </body>
 </html>
